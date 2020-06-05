@@ -1,0 +1,87 @@
+using System;
+
+namespace zadanie3
+{
+    class Program
+    {
+        static void minimal(int[] arr)
+        {
+            Random rand = new Random();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = -10 + rand.Next() % 20;
+                Console.Write(arr[i] + " | ");
+            }
+            Console.WriteLine();
+
+            int min = arr[0];
+            int modul;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (min < 0) min *= -1;
+
+                modul = arr[i];
+
+                if (modul < 0) modul *= -1;
+
+                if (modul < min) min = modul;
+            }
+            Console.Write(min);
+            Console.WriteLine("\n");
+        }
+
+
+        static void UniqueEl(int[] arr)
+        {
+            Random rand = new Random();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = -10 + rand.Next() % 20;
+                Console.Write(arr[i] + " | ");
+            }
+            Console.WriteLine();
+
+            int num = 0;
+            int k = 0;
+
+            Console.Write("Уникальные элементы: ");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int count = 0;
+
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr[j] == arr[i])
+                    {
+                        count++;
+                        num = arr[j];
+                    }
+                }
+
+                if (count == 1)
+                {
+                    Console.Write(num + " | ");
+                    k++;
+                }
+                else num = 0;
+            }
+            if (k == 0) Console.WriteLine(" уникальных элементы отсутствуют");   
+        }
+
+        static void Main(string[] args)
+        {
+            
+            Console.WriteLine("1) ");
+            int[] arr = new int[10];
+            minimal(arr);
+            
+            Console.WriteLine("1) ");
+            UniqueEl(arr);  
+                      
+        }
+    }
+}
